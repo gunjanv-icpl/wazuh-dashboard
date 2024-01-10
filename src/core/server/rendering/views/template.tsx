@@ -67,10 +67,10 @@ export const Template: FunctionComponent<Props> = ({
     </svg>
   );
   const openSearchLogoSpinner = (
-    <img alt="wazuh-animated-logo" src={`${uiPublicUrl}/spinners/light_mode_spinner.gif`} />
+    <img alt="wazuh-animated-logo" src={`${uiPublicUrl}/spinners/invinsense.svg`} style={{ width: '300px', height:'40px' }}/>
   );
   const openSearchLogoSpinnerDark = (
-    <img alt="wazuh-animated-logo" src={`${uiPublicUrl}/spinners/dark_mode_spinner.gif`} />
+    <img alt="wazuh-animated-logo" src={`${uiPublicUrl}/spinners/invinsense.svg`} style={{ width: '300px', height:'40px' }} />
   );
 
   const loadingLogoDefault = injectedMetadata.branding.loadingLogo?.defaultUrl;

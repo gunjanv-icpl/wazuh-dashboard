@@ -63,9 +63,8 @@ export function createEuiListItem({
   externalLink = false,
 }: Props) {
   const { href, id, title, disabled, euiIconType, icon, tooltip } = link;
-
-  return {
-    label: tooltip ?? title,
+  return {    
+    label: tooltip ?? title.toLowerCase() === 'wazuh'? 'SIEM': title,
     href,
     /* Use href and onClick to support "open in new tab" and SPA navigation in the same link */
     onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {

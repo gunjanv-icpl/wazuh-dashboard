@@ -54,6 +54,9 @@ npm-debug.log*
 .ci/bash_standard_lib.sh
 .gradle
 
+examples/main
+certs
+
 # apm plugin
 apm.tsconfig.json
 

@@ -58,7 +58,6 @@ function getAllCategories(allCategorizedLinks: Record<string, ChromeNavLink[]>) 
   for (const [key, value] of Object.entries(allCategorizedLinks)) {
     allCategories[key] = value[0].category;
   }
-
   return allCategories;
 }
 
@@ -283,7 +282,7 @@ export function CollapsibleNav({
             <EuiCollapsibleNavGroup
               key={category.id}
               iconType={opensearchLinkLogo}
-              title={category.label}
+              title={category.label.toLowerCase() === 'wazuh'? 'Invinsense': category.label}
               isCollapsible={true}
               initialIsOpen={getIsCategoryOpen(category.id, storage)}
               onToggle={(isCategoryOpen) => setIsCategoryOpen(category.id, isCategoryOpen, storage)}
@@ -293,7 +292,7 @@ export function CollapsibleNav({
               <EuiListGroup
                 aria-label={i18n.translate('core.ui.primaryNavSection.screenReaderLabel', {
                   defaultMessage: 'Primary navigation links, {category}',
-                  values: { category: category.label },
+                  values: { category: category.label.toLowerCase() === 'wazuh'? 'Invinsense': category.label },
                 })}
                 listItems={allCategorizedLinks[categoryName].map((link) => readyForEUI(link))}
                 maxWidth="none"
