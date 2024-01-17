@@ -67,10 +67,18 @@ export const Template: FunctionComponent<Props> = ({
     </svg>
   );
   const openSearchLogoSpinner = (
-    <img alt="wazuh-animated-logo" src={`${uiPublicUrl}/spinners/invinsense.svg`} style={{ width: '300px', height:'40px' }}/>
+    <img
+      alt="wazuh-animated-logo"
+      src={`${uiPublicUrl}/spinners/invinsense.svg`}
+      style={{ width: '300px', height: '40px' }}
+    />
   );
   const openSearchLogoSpinnerDark = (
-    <img alt="wazuh-animated-logo" src={`${uiPublicUrl}/spinners/invinsense.svg`} style={{ width: '300px', height:'40px' }} />
+    <img
+      alt="wazuh-animated-logo"
+      src={`${uiPublicUrl}/spinners/invinsense.svg`}
+      style={{ width: '300px', height: '40px' }}
+    />
   );
 
   const loadingLogoDefault = injectedMetadata.branding.loadingLogo?.defaultUrl;
@@ -78,7 +86,7 @@ export const Template: FunctionComponent<Props> = ({
   const markDefault = injectedMetadata.branding.mark?.defaultUrl;
   const markDarkMode = injectedMetadata.branding.mark?.darkModeUrl;
   const favicon = injectedMetadata.branding.faviconUrl;
-  const applicationTitle = injectedMetadata.branding.applicationTitle;
+  const applicationTitle = 'Invinsense' || 'OpenSearchDashboard';
 
   /**
    * Use branding configurations to check which URL to use for rendering

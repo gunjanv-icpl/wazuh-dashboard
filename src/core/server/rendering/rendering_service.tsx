@@ -160,7 +160,10 @@ export class RenderingService {
                 darkModeUrl: brandingAssignment.loadingLogoDarkmode,
               },
               faviconUrl: brandingAssignment.favicon,
-              applicationTitle: brandingAssignment.applicationTitle,
+              applicationTitle:
+                brandingAssignment.applicationTitle?.toLowerCase() === 'wazuh'
+                  ? 'Invinsense'
+                  : brandingAssignment.applicationTitle,
               useExpandedHeader: brandingAssignment.useExpandedHeader,
             },
             survey: opensearchDashboardsConfig.survey.url,
@@ -276,9 +279,7 @@ export class RenderingService {
     const favicon = brandingValidation.isFaviconValid ? branding.faviconUrl : undefined;
 
     // assign application title based on brandingValidation function result
-    const applicationTitle = brandingValidation.isTitleValid
-      ? branding.applicationTitle
-      : DEFAULT_TITLE;
+    const applicationTitle = brandingValidation.isTitleValid ? 'Invinsense' : DEFAULT_TITLE;
 
     // use expanded menu by default unless explicitly set to false
     const { useExpandedHeader = true } = branding;
@@ -335,7 +336,7 @@ export class RenderingService {
 
     const isFaviconValid = await this.isUrlValid(branding.faviconUrl, 'favicon');
 
-    const isTitleValid = this.isTitleValid(branding.applicationTitle, 'applicationTitle');
+    const isTitleValid = this.isTitleValid('Invinsense', 'applicationTitle');
 
     const brandingValidation: BrandingValidation = {
       isLogoDefaultValid,

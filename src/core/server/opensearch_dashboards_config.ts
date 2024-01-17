@@ -79,7 +79,7 @@ export const config = {
         defaultValue: '/',
       }),
       applicationTitle: schema.string({
-        defaultValue: 'Wazuh',
+        defaultValue: 'Invinsense',
       }),
       useExpandedHeader: schema.boolean({
         defaultValue: true,
