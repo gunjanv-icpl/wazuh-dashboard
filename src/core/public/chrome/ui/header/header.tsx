@@ -120,7 +120,7 @@ export function Header({
     <>
       <header className={className} data-test-subj="headerGlobalNav">
         <div id="globalHeaderBars">
-        {useExpandedHeader && (
+          {useExpandedHeader && (
             <EuiHeader
               className="expandedHeader"
               theme="dark"
