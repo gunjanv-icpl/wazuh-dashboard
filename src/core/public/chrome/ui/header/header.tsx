@@ -114,12 +114,50 @@ export function Header({
   const toggleCollapsibleNavRef = createRef<HTMLButtonElement & { euiAnimate: () => void }>();
   const navId = htmlIdGenerator()();
   const className = classnames('hide-for-sharing', 'headerGlobalNav');
-  const { useExpandedHeader = true, darkMode } = branding;
+  const { useExpandedHeader = false, darkMode } = branding;
 
   return (
     <>
       <header className={className} data-test-subj="headerGlobalNav">
         <div id="globalHeaderBars">
+        {useExpandedHeader && (
+            <EuiHeader
+              className="expandedHeader"
+              theme="dark"
+              position="fixed"
+              sections={[
+                {
+                  items: [
+                    <HeaderLogo
+                      href={homeHref}
+                      forceNavigation$={observables.forceAppSwitcherNavigation$}
+                      navLinks$={observables.navLinks$}
+                      navigateToApp={application.navigateToApp}
+                      branding={branding}
+                    />,
+                  ],
+                  borders: 'none',
+                },
+                {
+                  items: [
+                    <EuiShowFor sizes={['m', 'l', 'xl']}>
+                      <HeaderNavControls navControls$={observables.navControlsExpandedCenter$} />
+                    </EuiShowFor>,
+                  ],
+                  borders: 'none',
+                },
+                {
+                  items: [
+                    <EuiHideFor sizes={['m', 'l', 'xl']}>
+                      <HeaderNavControls navControls$={observables.navControlsExpandedCenter$} />
+                    </EuiHideFor>,
+                    <HeaderNavControls navControls$={observables.navControlsExpandedRight$} />,
+                  ],
+                  borders: 'none',
+                },
+              ]}
+            />
+          )}
           <EuiHeader position="fixed" className="primaryHeader">
             <EuiHeaderSection grow={false}>
               <EuiHeaderSectionItem border="right" className="header__toggleNavButtonSection">
