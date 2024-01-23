@@ -33,9 +33,7 @@ import {
   EuiHeaderSection,
   EuiHeaderSectionItem,
   EuiHeaderSectionItemButton,
-  EuiHideFor,
   EuiIcon,
-  EuiShowFor,
   htmlIdGenerator,
 } from '@elastic/eui';
 import { i18n } from '@osd/i18n';
@@ -62,7 +60,6 @@ import { HeaderHelpMenu } from './header_help_menu';
 import { HomeLoader } from './home_loader';
 import { HeaderNavControls } from './header_nav_controls';
 import { HeaderActionMenu } from './header_action_menu';
-import { HeaderLogo } from './header_logo';
 
 export interface HeaderProps {
   opensearchDashboardsVersion: string;
@@ -114,50 +111,12 @@ export function Header({
   const toggleCollapsibleNavRef = createRef<HTMLButtonElement & { euiAnimate: () => void }>();
   const navId = htmlIdGenerator()();
   const className = classnames('hide-for-sharing', 'headerGlobalNav');
-  const { useExpandedHeader = false, darkMode } = branding;
+  const { darkMode } = branding;
 
   return (
     <>
       <header className={className} data-test-subj="headerGlobalNav">
         <div id="globalHeaderBars">
-          {useExpandedHeader && (
-            <EuiHeader
-              className="expandedHeader"
-              theme="dark"
-              position="fixed"
-              sections={[
-                {
-                  items: [
-                    <HeaderLogo
-                      href={homeHref}
-                      forceNavigation$={observables.forceAppSwitcherNavigation$}
-                      navLinks$={observables.navLinks$}
-                      navigateToApp={application.navigateToApp}
-                      branding={branding}
-                    />,
-                  ],
-                  borders: 'none',
-                },
-                {
-                  items: [
-                    <EuiShowFor sizes={['m', 'l', 'xl']}>
-                      <HeaderNavControls navControls$={observables.navControlsExpandedCenter$} />
-                    </EuiShowFor>,
-                  ],
-                  borders: 'none',
-                },
-                {
-                  items: [
-                    <EuiHideFor sizes={['m', 'l', 'xl']}>
-                      <HeaderNavControls navControls$={observables.navControlsExpandedCenter$} />
-                    </EuiHideFor>,
-                    <HeaderNavControls navControls$={observables.navControlsExpandedRight$} />,
-                  ],
-                  borders: 'none',
-                },
-              ]}
-            />
-          )}
           <EuiHeader position="fixed" className="primaryHeader">
             <EuiHeaderSection grow={false}>
               <EuiHeaderSectionItem border="right" className="header__toggleNavButtonSection">
