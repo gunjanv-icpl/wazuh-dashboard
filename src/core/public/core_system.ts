@@ -259,13 +259,12 @@ export class CoreSystem {
       };
 
       await this.plugins.start(core);
-
-      const { useExpandedHeader = false } = injectedMetadata.getBranding() ?? {};
+      let { useExpandedHeader = false } = injectedMetadata.getBranding() ?? {};
       // ensure the rootDomElement is empty
       this.rootDomElement.textContent = '';
       this.rootDomElement.classList.add('coreSystemRootDomElement');
       if (useExpandedHeader) {
-        this.rootDomElement.classList.add('headerIsExpanded');
+        useExpandedHeader = false;
       }
       this.rootDomElement.appendChild(coreUiTargetDomElement);
       this.rootDomElement.appendChild(notificationsTargetDomElement);
