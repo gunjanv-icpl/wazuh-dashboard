@@ -23,5 +23,5 @@
 }
 
 .headerIsExpanded .vbLayout {
-  height: calc(100vh - #{$osdHeaderOffset});
+  height: calc(100vh - #{$osdHeaderOffset * 2});
 }
